@@ -1,5 +1,4 @@
 {
-  // Example league-level tendencies (schema placeholder)
   "pace": {
     "avgPossessions": 78,
     "variance": 6

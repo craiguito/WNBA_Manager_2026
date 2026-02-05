@@ -1,5 +1,5 @@
 [
-  // Example star player entry (schema placeholder)
+
   {
     "playerId": "player_0001",
     "firstName": "A'ja",
@@ -103,7 +103,6 @@
       "consistency": 0.76
     }
   },
-  // Example role player entry (schema placeholder)
   {
     "playerId": "player_0042",
     "firstName": "Aari",

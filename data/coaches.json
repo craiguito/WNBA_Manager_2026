@@ -1,5 +1,5 @@
 [
-  // Example coach entry (schema placeholder)
+
   {
     "coachId": "coach_0001",
     "name": "Becky Hammon",
@@ -57,7 +57,7 @@
       "lateGameStarUsage": 0.74
     }
   },
-  // Example lower-skill coach entry (can give bad advice)
+
   {
     "coachId": "coach_0099",
     "name": "Interim Coach",
