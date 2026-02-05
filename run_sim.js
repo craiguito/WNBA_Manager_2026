@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { GameEngine } from './src/GameEngine.js';
+import { GameEngine } from './src/sim/deep/GameEngine.js';
 
 // 1. LOAD PLAYERS
 const rawData = fs.readFileSync('./data/players_with_badges.json');
