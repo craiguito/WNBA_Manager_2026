@@ -1,0 +1,51 @@
+[
+  {
+    "teamId": "LVA",
+    "name": "Las Vegas Aces",
+    "conference": "West",
+    "division": "Pacific",
+    "colors": {
+      "primary": "#C8102E",
+      "secondary": "#000000"
+    },
+    "arena": {
+      "name": "Michelob ULTRA Arena",
+      "capacity": 12000
+    },
+    "coachId": "coach_0001",
+    "roster": ["player_0001", "player_0002"],
+    "staff": {
+      "medical": 0.75,
+      "analytics": 0.6,
+      "playerDevelopment": 0.7
+    },
+    "ownershipProfile": {
+      "patience": 0.62,
+      "ambition": 0.86,
+      "budgetFlexibility": 0.7,
+      "popularityFocus": 0.54
+    },
+    "facilities": {
+      "trainingQuality": 0.82,
+      "medicalQuality": 0.78,
+      "analyticsQuality": 0.74
+    },
+    "market": {
+      "marketSize": "medium",
+      "fanExpectation": 0.82,
+      "baselineAttendance": 10400
+    },
+    "finances": {
+      "payrollBudget": 1450000,
+      "cashOnHand": 3250000,
+      "ticketPriceIndex": 0.62,
+      "concessionsPriceIndex": 0.58,
+      "merchQuality": 0.72
+    },
+    "operationsStaff": {
+      "concessionsHead": { "name": "Tanya Fields", "quality": 0.74 },
+      "janitorialHead": { "name": "Marcus Lee", "quality": 0.68 },
+      "securityHead": { "name": "Renee Ortiz", "quality": 0.7 }
+    }
+  }
+]

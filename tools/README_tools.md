@@ -1,0 +1,1 @@
+Run the parser from the repo root with `python tools/parse_bref_per_game_2025.py`, optionally passing `--input` to point at a different saved per-game HTML file. The script reads the HTML table, deduplicates players by Player+Team, and writes the four CSV outputs into `raw_data/`.
