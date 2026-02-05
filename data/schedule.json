@@ -1,0 +1,20 @@
+[
+  {
+    "gameId": "game_2026_0001",
+    "date": "2026-05-14",
+    "tipoffTime": "19:00",
+    "homeTeamId": "LVA",
+    "awayTeamId": "NYL",
+    "venue": "Michelob ULTRA Arena",
+    "status": "scheduled",
+    "result": null,
+    "broadcastWindow": {
+      "national": true,
+      "importanceRating": 0.78
+    },
+    "simFlags": {
+      "allowDeepSim": true,
+      "allowWatchMode": true
+    }
+  }
+]

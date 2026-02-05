@@ -1,4 +1,4 @@
-import { GameEngine } from './GameEngine.js';
+import { GameEngine } from '../sim/deep/GameEngine.js';
 import { init3DScene, updateBallPosition, clearPlayers, addPlayerToScene } from './scene_setup.js';
 
 let engine = null;
