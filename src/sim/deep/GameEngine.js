@@ -38,6 +38,22 @@ export class GameEngine {
         return this.runStateLogic();
     }
 
+    simulateQuarter() {
+        let result = null;
+        while (result !== 'END_Q') {
+            result = this.tick();
+        }
+        return result;
+    }
+
+    printBoxScore() {
+        console.log(`FINAL: ${this.homeTeam.name} ${this.score.home} - ${this.score.away} ${this.awayTeam.name}`);
+        console.log('-----------------------------------------------');
+        Object.entries(this.stats).forEach(([player, statLine]) => {
+            console.log(`${player}: ${statLine.PTS} PTS, ${statLine.FGM}/${statLine.FGA} FG`);
+        });
+    }
+
     runStateLogic() {
         const offense = this.possessionSide === 'home' ? this.homeTeam : this.awayTeam;
         const defense = this.possessionSide === 'home' ? this.awayTeam : this.homeTeam;
