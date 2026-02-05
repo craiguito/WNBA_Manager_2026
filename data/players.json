@@ -1,5 +1,8 @@
 [
+<<<<<<< Updated upstream
   // Example star player entry (schema placeholder)
+=======
+>>>>>>> Stashed changes
   {
     "playerId": "player_0001",
     "firstName": "A'ja",
