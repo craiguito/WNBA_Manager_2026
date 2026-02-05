@@ -1,0 +1,79 @@
+[
+  // Example badge entry (schema placeholder)
+  {
+    "badgeId": "badge_elite_finisher",
+    "name": "Elite Finisher",
+    "tier": "Gold",
+    "description": "Boosts finishing success on drives and cuts.",
+    "effects": {
+      "finishing": 0.08,
+      "contactFinish": 0.12
+    },
+    "triggerConditions": {
+      "context": "drive",
+      "requiredState": {
+        "fatigueBelow": 0.7,
+        "defenderDistanceMin": 2.0
+      }
+    },
+    "simEffects": {
+      "decisionWeightModifiers": {
+        "drive": 0.08,
+        "kickOut": -0.02
+      },
+      "executionModifiers": {
+        "rimFinish": 0.06,
+        "contactFinish": 0.1
+      },
+      "fatigueModifiers": {
+        "driveCostMultiplier": 0.92
+      }
+    },
+    "stackingRules": {
+      "maxStacks": 1,
+      "perContextCap": 1
+    },
+    "cooldown": {
+      "seconds": 0
+    },
+    "uiTags": ["Finishing", "Clutch"]
+  },
+  {
+    "badgeId": "badge_pick_and_roll_driver",
+    "name": "PnR Driver",
+    "tier": "Silver",
+    "description": "Improves decision quality and burst in pick-and-roll actions.",
+    "effects": {
+      "burst": 0.06,
+      "decisionSpeed": 0.05
+    },
+    "triggerConditions": {
+      "context": "drive",
+      "requiredState": {
+        "playType": "pickAndRoll",
+        "fatigueBelow": 0.8
+      }
+    },
+    "simEffects": {
+      "decisionWeightModifiers": {
+        "drive": 0.06,
+        "pullUp": 0.02,
+        "reset": -0.03
+      },
+      "executionModifiers": {
+        "firstStep": 0.05
+      },
+      "fatigueModifiers": {
+        "driveCostMultiplier": 0.96
+      }
+    },
+    "stackingRules": {
+      "maxStacks": 2,
+      "perContextCap": 1
+    },
+    "cooldown": {
+      "seconds": 12
+    },
+    "uiTags": ["PnR", "Playmaking"]
+  }
+]
