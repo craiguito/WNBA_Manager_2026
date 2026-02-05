@@ -1,4 +1,7 @@
+// LEGACY: will be removed after deep sim refactor
 import { GameEngine } from '../sim/deep/GameEngine.js';
+import { EventBus } from '../core/event_bus.js';
+import { initGameData } from '../data/game_data.js';
 import { init3DScene, updateBallPosition, clearPlayers, addPlayerToScene } from './scene_setup.js';
 
 let engine = null;
@@ -26,8 +29,8 @@ if (speedSlider) {
 // Load roster data
 async function loadData() {
     try {
-        const res = await fetch('./data/players_with_badges.json');
-        allPlayersData = await res.json();
+        const data = await initGameData();
+        allPlayersData = data.legacy.players;
     } catch(e) { console.error("Data Load Failed", e); }
 }
 loadData();
@@ -44,9 +47,17 @@ document.getElementById('init-game-btn').onclick = () => {
     const homePlayers = allPlayersData.filter(p => p.Team === homeCode).sort((a,b) => b.ovr - a.ovr);
     const awayPlayers = allPlayersData.filter(p => p.Team === awayCode).sort((a,b) => b.ovr - a.ovr);
 
+    const eventBus = new EventBus();
+    eventBus.on('PLAY_EVENT', (payload) => {
+        if (payload?.message) {
+            console.log(`[PLAY_EVENT] ${payload.message}`);
+        }
+    });
+
     engine = new GameEngine(
         { name: homeCode, code: homeCode, isUser: true, roster: homePlayers.slice(0, 5), bench: homePlayers.slice(5) },
-        { name: awayCode, code: awayCode, isUser: false, roster: awayPlayers.slice(0, 5), bench: awayPlayers.slice(5) }
+        { name: awayCode, code: awayCode, isUser: false, roster: awayPlayers.slice(0, 5), bench: awayPlayers.slice(5) },
+        { eventBus }
     );
 
     engine.onLog = (time, msg, data) => {

@@ -1,9 +1,10 @@
-import fs from 'fs';
+// LEGACY: will be removed after deep sim refactor
 import { GameEngine } from './src/sim/deep/GameEngine.js';
+import { initGameData } from './src/data/game_data.js';
 
-// 1. LOAD PLAYERS
-const rawData = fs.readFileSync('./data/players_with_badges.json');
-const allPlayers = JSON.parse(rawData);
+// 1. LOAD PLAYERS (legacy mapping for CLI sim)
+const { legacy } = await initGameData();
+const allPlayers = legacy.players;
 
 // HELPER: Calculate OVR to sort starters
 const getOVR = (p) => {
@@ -27,7 +28,7 @@ console.log(`ACES STARTERS: ${aces.roster.map(p => p.Player).join(', ')}`);
 console.log(`FEVER STARTERS: ${fever.roster.map(p => p.Player).join(', ')}`);
 console.log("------------------------------------------------");
 
-// 3. START ENGINE
+// 3. START ENGINE (TODO: switch to new schema objects once deep sim is updated)
 const engine = new GameEngine(aces, fever);
 engine.simulateQuarter();
 
