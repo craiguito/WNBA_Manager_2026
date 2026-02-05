@@ -1,8 +1,4 @@
 [
-<<<<<<< Updated upstream
-  // Example star player entry (schema placeholder)
-=======
->>>>>>> Stashed changes
   {
     "playerId": "player_0001",
     "firstName": "A'ja",
@@ -75,7 +71,6 @@
       "passRiskTolerance": 0.28
     }
   },
-  // Example role player entry (schema placeholder)
   {
     "playerId": "player_0042",
     "firstName": "Aari",

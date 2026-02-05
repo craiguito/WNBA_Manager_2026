@@ -1,6 +1,4 @@
-[
-  // Example team entry (schema placeholder)
-  {
+[  {
     "teamId": "LVA",
     "name": "Las Vegas Aces",
     "conference": "West",
