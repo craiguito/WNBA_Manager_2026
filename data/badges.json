@@ -38,10 +38,7 @@
     "name": "PnR Driver",
     "tier": "Silver",
     "description": "Improves decision quality and burst in pick-and-roll actions.",
-    "effects": {
-      "burst": 0.06,
-      "decisionSpeed": 0.05
-    },
+    
     "triggerConditions": {
       "context": "drive",
       "requiredState": {
