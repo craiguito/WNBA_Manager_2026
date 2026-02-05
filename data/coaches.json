@@ -1,0 +1,118 @@
+[
+  // Example coach entry (schema placeholder)
+  {
+    "coachId": "coach_0001",
+    "name": "Becky Hammon",
+    "role": "Head Coach",
+    "teamId": "LVA",
+    "tendencies": {
+      "pace": 0.62,
+      "threeRate": 0.48,
+      "switchDefense": 0.55,
+      "zoneUsage": 0.18
+    },
+    "skills": {
+      "offense": 0.86,
+      "defense": 0.82,
+      "rotationManagement": 0.77,
+      "development": 0.64
+    },
+    "experience": {
+      "years": 9,
+      "playoffExperience": 0.78
+    },
+    "tacticalProfile": {
+      "pacePreference": 0.6,
+      "shotProfileBias": {
+        "rim": 0.34,
+        "mid": 0.22,
+        "three": 0.44
+      },
+      "defensiveSchemeBias": {
+        "man": 0.62,
+        "zone": 0.12,
+        "switch": 0.26
+      }
+    },
+    "adviceQuality": {
+      "accuracy": 0.82,
+      "confidence": 0.76,
+      "riskBias": 0.52
+    },
+    "developmentImpact": {
+      "youngPlayerGrowth": 0.74,
+      "veteranStability": 0.68
+    },
+    "rotationPhilosophy": {
+      "starterMinutesBias": 0.78,
+      "benchTrust": 0.6,
+      "rookiesTrust": 0.52,
+      "fatigueSensitivity": 0.62,
+      "foulTroubleSensitivity": 0.58
+    },
+    "inGameManagement": {
+      "timeoutAggression": 0.54,
+      "challengeTendency": 0.42,
+      "schemeAdaptability": 0.68,
+      "lateGameStarUsage": 0.74
+    }
+  },
+  // Example lower-skill coach entry (can give bad advice)
+  {
+    "coachId": "coach_0099",
+    "name": "Interim Coach",
+    "role": "Head Coach",
+    "teamId": "SEA",
+    "tendencies": {
+      "pace": 0.48,
+      "threeRate": 0.36,
+      "switchDefense": 0.2,
+      "zoneUsage": 0.34
+    },
+    "skills": {
+      "offense": 0.42,
+      "defense": 0.45,
+      "rotationManagement": 0.38,
+      "development": 0.4
+    },
+    "experience": {
+      "years": 2,
+      "playoffExperience": 0.08
+    },
+    "tacticalProfile": {
+      "pacePreference": 0.45,
+      "shotProfileBias": {
+        "rim": 0.28,
+        "mid": 0.42,
+        "three": 0.3
+      },
+      "defensiveSchemeBias": {
+        "man": 0.4,
+        "zone": 0.4,
+        "switch": 0.2
+      }
+    },
+    "adviceQuality": {
+      "accuracy": 0.38,
+      "confidence": 0.7,
+      "riskBias": 0.22
+    },
+    "developmentImpact": {
+      "youngPlayerGrowth": 0.36,
+      "veteranStability": 0.42
+    },
+    "rotationPhilosophy": {
+      "starterMinutesBias": 0.46,
+      "benchTrust": 0.34,
+      "rookiesTrust": 0.22,
+      "fatigueSensitivity": 0.28,
+      "foulTroubleSensitivity": 0.32
+    },
+    "inGameManagement": {
+      "timeoutAggression": 0.62,
+      "challengeTendency": 0.48,
+      "schemeAdaptability": 0.36,
+      "lateGameStarUsage": 0.52
+    }
+  }
+]
