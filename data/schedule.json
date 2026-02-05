@@ -8,6 +8,14 @@
     "awayTeamId": "NYL",
     "venue": "Michelob ULTRA Arena",
     "status": "scheduled",
-    "result": null
+    "result": null,
+    "broadcastWindow": {
+      "national": true,
+      "importanceRating": 0.78
+    },
+    "simFlags": {
+      "allowDeepSim": true,
+      "allowWatchMode": true
+    }
   }
 ]

@@ -1,5 +1,5 @@
 [
-  // Example player entry (schema placeholder)
+  // Example star player entry (schema placeholder)
   {
     "playerId": "player_0001",
     "firstName": "A'ja",
@@ -29,6 +29,120 @@
     "contract": {
       "yearsRemaining": 2,
       "salary": 210000
+    },
+    "athleticProfile": {
+      "speed": 82,
+      "acceleration": 79,
+      "lateralQuickness": 76,
+      "vertical": 84,
+      "strength": 88,
+      "wingspanIn": 84
+    },
+    "shootingProfile": {
+      "rim": { "rating": 95, "tendency": 0.36 },
+      "midRange": { "rating": 74, "tendency": 0.22 },
+      "threePoint": { "rating": 68, "tendency": 0.12 },
+      "offDribble": 70,
+      "catchAndShoot": 76,
+      "shotDiscipline": 82
+    },
+    "defenseProfile": {
+      "onBall": 86,
+      "helpDefense": 92,
+      "stealTiming": 62,
+      "blockTiming": 88,
+      "closeoutControl": 84,
+      "foulTendency": 0.18
+    },
+    "mentalState": {
+      "confidenceBaseline": 0.72,
+      "pressureHandling": 0.84,
+      "clutchFactor": 0.81
+    },
+    "healthProfile": {
+      "durability": 88,
+      "injuryRisk": 0.14,
+      "recoveryRate": 0.78
+    },
+    "tendencies": {
+      "driveBias": 0.62,
+      "pullUpBias": 0.22,
+      "kickOutBias": 0.34,
+      "postUpBias": 0.48,
+      "passRiskTolerance": 0.28
+    }
+  },
+  // Example role player entry (schema placeholder)
+  {
+    "playerId": "player_0042",
+    "firstName": "Aari",
+    "lastName": "McDonald",
+    "displayName": "Aari McDonald",
+    "teamId": "IND",
+    "position": "G",
+    "heightIn": 64,
+    "weightLb": 132.4,
+    "archetype": "Change-of-Pace Guard",
+    "badges": ["badge_pick_and_roll_driver"],
+    "attributes": {
+      "finishing": 72,
+      "shooting": 68,
+      "playmaking": 74,
+      "defense": 70,
+      "rebounding": 42,
+      "stamina": 86
+    },
+    "hiddenTraits": {
+      "vision": 0.58,
+      "bbiq": 0.6,
+      "composure": 0.54,
+      "riskTolerance": 0.46,
+      "aggressionBias": 0.52
+    },
+    "contract": {
+      "yearsRemaining": 1,
+      "salary": 82500
+    },
+    "athleticProfile": {
+      "speed": 88,
+      "acceleration": 90,
+      "lateralQuickness": 84,
+      "vertical": 70,
+      "strength": 52,
+      "wingspanIn": 67
+    },
+    "shootingProfile": {
+      "rim": { "rating": 70, "tendency": 0.28 },
+      "midRange": { "rating": 66, "tendency": 0.2 },
+      "threePoint": { "rating": 69, "tendency": 0.24 },
+      "offDribble": 68,
+      "catchAndShoot": 71,
+      "shotDiscipline": 64
+    },
+    "defenseProfile": {
+      "onBall": 74,
+      "helpDefense": 66,
+      "stealTiming": 70,
+      "blockTiming": 40,
+      "closeoutControl": 72,
+      "foulTendency": 0.24
+    },
+    "mentalState": {
+      "confidenceBaseline": 0.52,
+      "pressureHandling": 0.5,
+      "clutchFactor": 0.46
+    },
+    "healthProfile": {
+      "durability": 74,
+      "injuryRisk": 0.22,
+      "recoveryRate": 0.68
+    },
+    "tendencies": {
+      "driveBias": 0.54,
+      "pullUpBias": 0.3,
+      "kickOutBias": 0.42,
+      "postUpBias": 0.06,
+      "passRiskTolerance": 0.4
     }
   }
 ]

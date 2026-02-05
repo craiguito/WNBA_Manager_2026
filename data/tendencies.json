@@ -12,5 +12,19 @@
   "foulRates": {
     "shootingFoulRate": 0.14,
     "bonusThreshold": 5
+  },
+  "globalDecisionNoise": {
+    "base": 0.12,
+    "fatigueMultiplier": 0.18,
+    "pressureMultiplier": 0.22
+  },
+  "momentumEffects": {
+    "hotStreakAggressionBoost": 0.08,
+    "coldStreakConservatism": 0.1
+  },
+  "lateGameAdjustments": {
+    "tighterDefense": 0.12,
+    "slowerPace": 0.1,
+    "higherStarUsage": 0.14
   }
 }
