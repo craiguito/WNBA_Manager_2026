@@ -2,7 +2,6 @@ import json
 import re
 import unicodedata
 from pathlib import Path
-
 import pandas as pd
 
 PHASE0_IN = Path("raw_data/phase0_players_index_2025.csv")
@@ -22,66 +21,73 @@ def norm_name(s: str) -> str:
 
 
 def parse_height_to_inches(v):
-    """
-    Handles:
-      - 74, 74.0
-      - "74"
-      - "6'2"
-      - "6-2"
-      - "6 2"
-      - returns int or pd.NA
-    """
     if v is None:
         return pd.NA
     if isinstance(v, (int, float)) and not pd.isna(v):
         return int(round(float(v)))
-
     s = str(v).strip().lower()
     if s in ("", "nan", "none", "null"):
         return pd.NA
-
-    # plain numeric string
     if re.fullmatch(r"\d+(\.\d+)?", s):
         return int(round(float(s)))
-
-    # feet-inches patterns
     m = re.search(r"(\d+)\s*['\- ]\s*(\d+)", s)
     if m:
-        ft = int(m.group(1))
-        inch = int(m.group(2))
-        return ft * 12 + inch
-
+        return int(m.group(1)) * 12 + int(m.group(2))
     return pd.NA
 
 
 def parse_weight_lb(v):
-    """
-    Handles:
-      - 165, 165.0
-      - "165"
-      - "165 lbs", "165lb"
-      - returns float or pd.NA
-    """
     if v is None:
         return pd.NA
     if isinstance(v, (int, float)) and not pd.isna(v):
         return float(v)
-
     s = str(v).strip().lower()
     if s in ("", "nan", "none", "null"):
         return pd.NA
-
     s = re.sub(r"[^0-9.]", "", s)
-    if s == "":
+    if not s:
         return pd.NA
     return float(s)
 
 
+def deep_get(d, path, default=None):
+    cur = d
+    for k in path:
+        if not isinstance(cur, dict) or k not in cur:
+            return default
+        cur = cur[k]
+    return cur
+
+
 def pick_field(d: dict, candidates):
     for c in candidates:
-        if c in d:
-            return d[c]
+        if isinstance(c, tuple):
+            v = deep_get(d, c, None)
+            if v is not None:
+                return v
+        else:
+            if c in d and d[c] is not None:
+                return d[c]
     return None
+
+
+def extract_player_array(obj):
+    # case 1: top-level list
+    if isinstance(obj, list):
+        return obj
+
+    # case 2: top-level dict with common keys
+    if isinstance(obj, dict):
+        for k in ["players", "data", "items", "roster", "results"]:
+            v = obj.get(k)
+            if isinstance(v, list):
+                return v
+        # if dict values contain exactly one list-like candidate
+        list_values = [v for v in obj.values() if isinstance(v, list)]
+        if len(list_values) == 1:
+            return list_values[0]
+
+    return []
 
 
 def main():
@@ -91,31 +97,54 @@ def main():
         raise FileNotFoundError(f"Missing {PLAYERS_JSON}")
 
     p0 = pd.read_csv(PHASE0_IN)
+
     with open(PLAYERS_JSON, "r", encoding="utf-8") as f:
-        arr = json.load(f)
+        obj = json.load(f)
+
+    arr = extract_player_array(obj)
+    if not arr:
+        raise RuntimeError(
+            "Could not find player list in players_with_badges.json. "
+            "Expected top-level list or dict containing players/data/items/roster."
+        )
 
     rows = []
     for p in arr:
-        name = pick_field(p, ["playerName", "name", "displayName"])
-        h = pick_field(p, ["heightIn", "height", "height_in"])
-        w = pick_field(p, ["weightLb", "weight", "weight_lb"])
+        if not isinstance(p, dict):
+            continue
+
+        name = pick_field(p, [
+            "playerName", "name", "fullName", "displayName",
+            ("bio", "name"), ("player", "name")
+        ])
+        h = pick_field(p, [
+            "heightIn", "height", "height_in",
+            ("bio", "height"), ("measurements", "height")
+        ])
+        w = pick_field(p, [
+            "weightLb", "weight", "weight_lb",
+            ("bio", "weight"), ("measurements", "weight")
+        ])
 
         if name is None:
             continue
 
+        h_in = parse_height_to_inches(h)
+        w_lb = parse_weight_lb(w)
+
         rows.append({
             "playerName_json": str(name).strip(),
             "nameKey": norm_name(name),
-            "heightIn": parse_height_to_inches(h),
-            "weightLb": parse_weight_lb(w),
-            "bioScore": int(pd.notna(parse_height_to_inches(h))) + int(pd.notna(parse_weight_lb(w)))
+            "heightIn": h_in,
+            "weightLb": w_lb,
+            "bioScore": int(pd.notna(h_in)) + int(pd.notna(w_lb))
         })
 
     jdf = pd.DataFrame(rows)
     if jdf.empty:
         raise RuntimeError("No player rows parsed from players_with_badges.json")
 
-    # keep best row per normalized name (prefer row with both height+weight)
+    # keep best row per name
     jdf = (
         jdf.sort_values(["bioScore"], ascending=False)
            .drop_duplicates(subset=["nameKey"], keep="first")
@@ -126,11 +155,17 @@ def main():
     merged = p0.merge(
         jdf[["nameKey", "heightIn", "weightLb"]],
         on="nameKey",
-        how="left",
-        validate="one_to_one"
+        how="left"
     )
 
-    merged = merged.drop(columns=["nameKey"])
+    # guard: ensure no duplicate phase0 rows created
+    if len(merged) != len(p0):
+        raise RuntimeError(
+            f"Merge changed row count: phase0={len(p0)} merged={len(merged)}. "
+            "Check duplicate names in source JSON."
+        )
+
+    merged.drop(columns=["nameKey"], inplace=True)
     merged.to_csv(PHASE0_OUT, index=False, encoding="utf-8")
 
     total = len(merged)
@@ -142,8 +177,8 @@ def main():
 
     missing = merged[merged["heightIn"].isna() | merged["weightLb"].isna()][["playerName", "teamId", "pos"]]
     if not missing.empty:
-        print("\n⚠ Missing height or weight (first 20):")
-        print(missing.head(20).to_string(index=False))
+        print("\n⚠ Missing height or weight (first 25):")
+        print(missing.head(25).to_string(index=False))
 
 
 if __name__ == "__main__":
