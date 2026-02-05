@@ -1,0 +1,24 @@
+[
+  // Example team entry (schema placeholder)
+  {
+    "teamId": "LVA",
+    "name": "Las Vegas Aces",
+    "conference": "West",
+    "division": "Pacific",
+    "colors": {
+      "primary": "#C8102E",
+      "secondary": "#000000"
+    },
+    "arena": {
+      "name": "Michelob ULTRA Arena",
+      "capacity": 12000
+    },
+    "coachId": "coach_0001",
+    "roster": ["player_0001", "player_0002"],
+    "staff": {
+      "medical": 0.75,
+      "analytics": 0.6,
+      "playerDevelopment": 0.7
+    }
+  }
+]

@@ -1,0 +1,13 @@
+[
+  // Example badge entry (schema placeholder)
+  {
+    "badgeId": "badge_elite_finisher",
+    "name": "Elite Finisher",
+    "tier": "Gold",
+    "description": "Boosts finishing success on drives and cuts.",
+    "effects": {
+      "finishing": 0.08,
+      "contactFinish": 0.12
+    }
+  }
+]

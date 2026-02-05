@@ -1,0 +1,16 @@
+{
+  // Example league-level tendencies (schema placeholder)
+  "pace": {
+    "avgPossessions": 78,
+    "variance": 6
+  },
+  "shotMix": {
+    "rimRate": 0.32,
+    "midRangeRate": 0.26,
+    "threeRate": 0.42
+  },
+  "foulRates": {
+    "shootingFoulRate": 0.14,
+    "bonusThreshold": 5
+  }
+}

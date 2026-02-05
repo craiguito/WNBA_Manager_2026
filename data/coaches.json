@@ -1,0 +1,21 @@
+[
+  // Example coach entry (schema placeholder)
+  {
+    "coachId": "coach_0001",
+    "name": "Becky Hammon",
+    "role": "Head Coach",
+    "teamId": "LVA",
+    "tendencies": {
+      "pace": 0.62,
+      "threeRate": 0.48,
+      "switchDefense": 0.55,
+      "zoneUsage": 0.18
+    },
+    "skills": {
+      "offense": 0.86,
+      "defense": 0.82,
+      "rotationManagement": 0.77,
+      "development": 0.64
+    }
+  }
+]
