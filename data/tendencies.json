@@ -1,0 +1,46 @@
+{
+  // Example league-level tendencies (schema placeholder)
+  "units": {
+    "distance": "feet"
+  },
+  "pace": {
+    "avgPossessions": 78,
+    "variance": 6
+  },
+  "shotMix": {
+    "rimRate": 0.32,
+    "midRangeRate": 0.26,
+    "threeRate": 0.42
+  },
+  "foulRates": {
+    "shootingFoulRate": 0.14,
+    "bonusThreshold": 5
+  },
+  "globalDecisionNoise": {
+    "base": 0.12,
+    "fatigueMultiplier": 0.18,
+    "pressureMultiplier": 0.22
+  },
+  "momentumEffects": {
+    "hotStreakAggressionBoost": 0.08,
+    "coldStreakConservatism": 0.1
+  },
+  "lateGameAdjustments": {
+    "tighterDefense": 0.12,
+    "slowerPace": 0.1,
+    "higherStarUsage": 0.14
+  },
+  "spacing": {
+    "minOffenseSpacingFeet": 14,
+    "screenProximityFeet": 6
+  },
+  "defenseHelp": {
+    "nailHelpRadiusFeet": 10,
+    "lowManTagRadiusFeet": 9,
+    "closeoutMaxDistanceFeet": 16
+  },
+  "passing": {
+    "laneInterceptRadiusFeet": 2.5,
+    "maxPassCandidates": 4
+  }
+}
