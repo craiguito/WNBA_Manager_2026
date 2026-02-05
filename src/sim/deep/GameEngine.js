@@ -1,9 +1,10 @@
 export class GameEngine {
-    constructor(homeTeam, awayTeam) {
+    constructor(homeTeam, awayTeam, options = {}) {
         this.homeTeam = this.initRoster(homeTeam);
         this.awayTeam = this.initRoster(awayTeam);
         this.score = { home: 0, away: 0 };
         this.timeRemaining = 600; // 10 Minutes
+        this.eventBus = options.eventBus || null;
         
         this.currentState = 'START_GAME'; 
         this.stateTimer = 0; 
@@ -35,7 +36,29 @@ export class GameEngine {
             this.stateTimer--;
             return null;
         }
-        return this.runStateLogic();
+        const result = this.runStateLogic();
+        this.emit('GAME_STATE_CHANGED', {
+            timeRemaining: this.timeRemaining,
+            state: this.currentState,
+            possessionSide: this.possessionSide
+        });
+        return result;
+    }
+
+    simulateQuarter() {
+        let result = null;
+        while (result !== 'END_Q') {
+            result = this.tick();
+        }
+        return result;
+    }
+
+    printBoxScore() {
+        console.log(`FINAL: ${this.homeTeam.name} ${this.score.home} - ${this.score.away} ${this.awayTeam.name}`);
+        console.log('-----------------------------------------------');
+        Object.entries(this.stats).forEach(([player, statLine]) => {
+            console.log(`${player}: ${statLine.PTS} PTS, ${statLine.FGM}/${statLine.FGA} FG`);
+        });
     }
 
     runStateLogic() {
@@ -60,9 +83,24 @@ export class GameEngine {
                 if (made) {
                     this.score[this.possessionSide] += 2;
                     this.log(`> ${this.currentHandler.Player} scores! (+2)`, {x: 0, z: 40});
+                    this.emit('SCORE_CHANGED', {
+                        score: { ...this.score },
+                        possessionSide: this.possessionSide,
+                        scorer: this.currentHandler.Player
+                    });
+                    this.emit('PLAY_EVENT', {
+                        type: 'SHOT_MADE',
+                        message: `${this.currentHandler.Player} scores!`,
+                        possessionSide: this.possessionSide
+                    });
                     this.possessionSide = (this.possessionSide === 'home' ? 'away' : 'home');
                 } else {
                     this.log(`> ${this.currentHandler.Player} misses.`, {x: 0, z: 40});
+                    this.emit('PLAY_EVENT', {
+                        type: 'SHOT_MISSED',
+                        message: `${this.currentHandler.Player} misses.`,
+                        possessionSide: this.possessionSide
+                    });
                 }
                 this.currentState = 'POSSESSION_START';
                 this.stateTimer = 2;
@@ -84,5 +122,11 @@ export class GameEngine {
 
     log(message, data) {
         if (this.onLog) this.onLog(this.timeRemaining, message, data);
+    }
+
+    emit(eventName, payload) {
+        if (this.eventBus) {
+            this.eventBus.emit(eventName, payload);
+        }
     }
 }
