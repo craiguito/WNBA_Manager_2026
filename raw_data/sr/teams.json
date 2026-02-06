@@ -1,0 +1,105 @@
+{
+    "league": {
+        "id": "59c24590-0adb-4b3d-80a8-10450f83f4a1",
+        "name": "WNBA",
+        "alias": "WNBA"
+    },
+    "teams": [
+        {
+            "id": "171b097d-01db-4ae8-9d56-035689402ec6",
+            "name": "Aces",
+            "alias": "LVA",
+            "market": "Las Vegas"
+        },
+
+        {
+            "id": "5d70a9af-8c2b-4aec-9e68-9acc6ddb93e4",
+            "name": "Dream",
+            "alias": "ATL",
+            "market": "Atlanta"
+        },
+        {
+            "id": "f073a15f-0486-4179-b0a3-dfd0294eb595",
+            "name": "Fever",
+            "alias": "IND",
+            "market": "Indiana"
+        },
+        {
+            "id": "d54283cc-c5ec-4dbd-bb61-166f217e3864",
+            "name": "Fire",
+            "alias": "PDX",
+            "market": "Portland"
+        },
+        {
+            "id": "08ed8274-e29f-4248-bc2e-83cc8ed18d75",
+            "name": "Liberty",
+            "alias": "NYL",
+            "market": "New York"
+        },
+        {
+            "id": "6f017f37-be96-4bdc-b6d3-0a0429c72e89",
+            "name": "Lynx",
+            "alias": "MIN",
+            "market": "Minnesota"
+        },
+        {
+            "id": "0699edf3-5993-4182-b9b4-ec935cbd4fcc",
+            "name": "Mercury",
+            "alias": "PHX",
+            "market": "Phoenix"
+        },
+        {
+            "id": "5c0d47fe-8539-47b0-9f36-d0b3609ca89b",
+            "name": "Mystics",
+            "alias": "WAS",
+            "market": "Washington"
+        },
+        {
+            "id": "3c409388-ab73-4c7f-953d-3a71062240f6",
+            "name": "Sky",
+            "alias": "CHI",
+            "market": "Chicago"
+        },
+        {
+            "id": "0a5ad38d-2fe3-43ba-894b-1ba3d5042ea9",
+            "name": "Sparks",
+            "alias": "LAS",
+            "market": "Los Angeles"
+        },
+
+        {
+            "id": "d6a012ed-84aa-48d3-8265-2d3f3ff2199a",
+            "name": "Storm",
+            "alias": "SEA",
+            "market": "Seattle"
+        },
+        {
+            "id": "a015b02d-845c-40c1-8ef4-844984f47e4d",
+            "name": "Sun",
+            "alias": "CON",
+            "market": "Connecticut"
+        },
+
+        {
+            "id": "4e4f726e-a015-4306-91a7-28e8576c7868",
+            "name": "Tempo",
+            "alias": "TOR",
+            "market": "Toronto"
+        },
+        {
+            "id": "4f57ec40-0d35-4b59-bea0-9d040f0d2292",
+            "name": "Valkyries",
+            "alias": "GSV",
+            "market": "Golden State"
+        },
+
+        {
+            "id": "5f0b5caf-708b-4300-92f2-53b51d83ec06",
+            "name": "Wings",
+            "alias": "DAL",
+            "market": "Dallas"
+        }
+
+    ],
+    "_comment": "Generation started @ 2026-01-23 21:32:15 +0000 ended @ 2026-01-23 21:32:15 +0000"
+}
