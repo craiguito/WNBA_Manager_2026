@@ -1,0 +1,11 @@
+file,type,column,count,examples,out,rows,cols
+pbp_events.csv,unmapped_team_uuid,attribution_team_id,2.0,bffa4df2-c1b7-4ef4-b3d5-d5cc26df350f;a94924c8-9ca9-49aa-94f1-864f49c51a1c,,,
+pbp_events.csv,unmapped_team_uuid,possession_team_id,2.0,a94924c8-9ca9-49aa-94f1-864f49c51a1c;bffa4df2-c1b7-4ef4-b3d5-d5cc26df350f,,,
+pbp_events.csv,wrote,,,,raw_data\phase4_canonical\pbp_events_canonical.csv,111936.0,32.0
+pbp_lineups.csv,unmapped_team_uuid,lineup_team_id,2.0,a94924c8-9ca9-49aa-94f1-864f49c51a1c;bffa4df2-c1b7-4ef4-b3d5-d5cc26df350f,,,
+pbp_lineups.csv,unmapped_player_uuid,player_id,21.0,62b9a043-7510-4e53-8666-e14602bdbd49;a3b7b84f-cfa9-42cc-8534-f11d2e90e8de;836cd047-874a-464b-9d20-20491fbc8046;dcae3590-523f-4b3d-a8b6-c00730d0eda9;9be4b9f9-76d7-4540-87a4-fd78eb60d301;1db3458a-8ac3-4939-95bb-5c74f478e18c;d8df74ae-9911-43cb-9ae4-a6949093942a;7198b1c2-005e-46b1-a4f6-cb362983c7a1;7aab70d6-2179-4389-a30e-e3da9c6a1713;9f24ada2-0ccc-48c1-b7e3-6e5b8bf59739,,,
+pbp_lineups.csv,wrote,,,,raw_data\phase4_canonical\pbp_lineups_canonical.csv,1107820.0,20.0
+phase4_player_event_rates_2025.csv,missing_input,,,,,,
+phase4_lineup_stints_2025.csv,missing_input,,,,,,
+phase4_team_style_2025.csv,missing_input,,,,,,
+phase4_game_context_2025.csv,missing_input,,,,,,
